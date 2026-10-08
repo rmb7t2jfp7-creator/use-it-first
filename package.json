@@ -1,0 +1,9 @@
+{
+  "name": "use-it-first",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A local pantry and shopping-target planner with no dependencies.",
+  "license": "MIT",
+  "scripts": { "test": "node --test core.test.js" },
+  "engines": { "node": ">=18" }
+}

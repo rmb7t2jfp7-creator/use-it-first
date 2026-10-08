@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A small, local pantry and shopping planner. See what you have before you buy.">
+  <title>Use It First · A little less forgotten</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="core.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to planner</a>
+  <header class="site-header"><a class="wordmark" href="index.html"><span aria-hidden="true">↟</span> use it first</a><span class="header-note">A little less forgotten.</span></header>
+  <main id="main">
+    <section class="hero" aria-labelledby="title"><div><p class="eyebrow">YOUR KITCHEN, AT A GLANCE</p><h1 id="title">Good things.<br>Already here.</h1><p class="intro">See what’s on hand, choose what to use first,<br class="wide-only"> and buy only what’s missing from your list.</p></div><div class="hero-mark" aria-hidden="true"><span>USE</span><span>WHAT</span><span>YOU HAVE.</span><div class="small-mark">↟</div></div></section>
+    <div class="utility"><p id="storage-status" role="status">Your pantry stays in this browser.</p><div class="utility-actions"><button id="export" class="quiet">Export backup</button><label class="file-button quiet">Import backup<input type="file" id="import" accept=".json,application/json"></label><button id="sample" class="quiet">Try fictional sample</button><button id="reset" class="quiet danger">Reset</button></div></div>
+    <p id="notice" class="notice" role="status" hidden></p>
+    <nav class="tabs" aria-label="Planner views"><button id="pantry-tab" class="tab active" aria-pressed="true">01 · Pantry <span id="pantry-count">0</span></button><button id="shopping-tab" class="tab" aria-pressed="false">02 · Shopping <span id="shopping-count">0</span></button></nav>
+    <section id="pantry-panel" aria-labelledby="pantry-title">
+      <div class="section-heading"><div><h2 id="pantry-title">Use-first shelf</h2><p>Your chosen dates set the order. Undated items come last.</p></div><label class="search"><span class="sr-only">Search pantry</span><input id="search" type="search" placeholder="Find an item…" maxlength="120"></label></div>
+      <div class="workspace"><aside class="editor"><p class="eyebrow">MAKE A LITTLE NOTE</p><h3 id="item-form-title">Add to your pantry</h3><form id="item-form"><input type="hidden" id="item-id"><label>Item name<input id="item-name" required maxlength="120" placeholder="e.g. Rice"></label><div class="form-row"><label>On hand<input id="item-quantity" type="number" min="0" max="1000000000" step="0.001" required placeholder="300"></label><label>Unit<select id="item-unit"><option value="count">count</option><option value="g">g</option><option value="kg">kg</option><option value="mL">mL</option><option value="L">L</option></select></label></div><label>Location<select id="item-location"><option>Pantry</option><option>Fridge</option><option>Freezer</option><option>Other</option></select></label><label>Use-first date <span class="optional">optional</span><input id="item-date" type="date" min="1000-01-01" max="9999-12-31"></label><p class="field-help">A date you choose for planning, not a food-safety assessment.</p><p id="item-error" class="error" role="alert" hidden></p><div class="form-actions"><button class="primary" type="submit">Save item <span aria-hidden="true">↗</span></button><button id="item-cancel" type="button" class="quiet" hidden>Cancel edit</button></div></form></aside><div><p id="pantry-summary" class="list-summary"></p><div id="pantry-list" class="item-list"></div></div></div>
+    </section>
+    <section id="shopping-panel" aria-labelledby="shopping-title" hidden>
+      <div class="section-heading"><div><h2 id="shopping-title">Before you go</h2><p>Set the total amount you want. We subtract matching pantry stock.</p></div><button id="copy-list" class="quiet">Copy shopping list</button></div>
+      <div class="workspace"><aside class="editor"><p class="eyebrow">ONLY WHAT’S MISSING</p><h3 id="need-form-title">Add a shopping target</h3><form id="need-form"><input type="hidden" id="need-id"><label>Item name<input id="need-name" required maxlength="120" placeholder="Match your pantry name"></label><div class="form-row"><label>Want in total<input id="need-quantity" type="number" min="0.001" max="1000000000" step="0.001" required placeholder="500"></label><label>Unit<select id="need-unit"><option value="count">count</option><option value="g">g</option><option value="kg">kg</option><option value="mL">mL</option><option value="L">L</option></select></label></div><p class="field-help">For example: want 500 g, have 300 g → buy 200 g. Names ignore capitalization; units must match.</p><p id="need-error" class="error" role="alert" hidden></p><div class="form-actions"><button class="primary" type="submit">Save target <span aria-hidden="true">↗</span></button><button id="need-cancel" type="button" class="quiet" hidden>Cancel edit</button></div></form></aside><div><p id="shopping-summary" class="list-summary"></p><div id="shopping-list" class="item-list"></div><textarea id="copy-fallback" class="copy-fallback" aria-label="Shopping list to copy" readonly hidden></textarea></div></div>
+    </section>
+  </main>
+  <footer><span>Little tools for everyday care.</span><span>Local storage · No account · Export to keep a backup</span></footer>
+</body></html>
